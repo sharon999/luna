@@ -1,0 +1,8 @@
+streamlit
+torch
+numpy
+pillow
+requests
+gdown
+matplotlib
+pandas
