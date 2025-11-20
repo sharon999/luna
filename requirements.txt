@@ -6,3 +6,4 @@ requests
 gdown
 matplotlib
 pandas
+scikit-learn
