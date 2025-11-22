@@ -44,7 +44,7 @@ def run_training_only_train(
     # לוודא שהסקריפטים זמינים לייבוא
     sys.path.append('/content/drive/My Drive/Luna16/scripts')
     from preprocessing import DataBowl3Detector  # בדיוק כמו במחברת
-    st.write(f"🚀 222התחלת אפוק ")
+    #st.write(f"🚀 222התחלת אפוק ")
 
     # ==== קונפיגורציה כמו במחברת (התאמתי לנתיבים מתוך הפרמטרים) ====
     config = {
@@ -125,8 +125,8 @@ def run_training_only_train(
 
     # ==== לולאת אימון ====
     for epoch in range(start_epoch, start_epoch + num_epochs):
-        print(f"\n========== Epoch {epoch}/{start_epoch + num_epochs - 1} ==========")
-        st.write(f"🚀 התחלת אפוק {epoch}/{start_epoch + num_epochs - 1}")
+        #print(f"\n========== Epoch {epoch}/{start_epoch + num_epochs - 1} ==========")
+        #st.write(f"🚀 התחלת אפוק {epoch}/{start_epoch + num_epochs - 1}")
 
         # 🔹 TRAIN
         train_cls_loss, train_bbox_loss, train_acc, train_iou, train_dice = train_one_epoch_vit(
@@ -139,7 +139,7 @@ def run_training_only_train(
             scheduler,
             epoch
         )
-        st.write(f"🚀 התחלת validation ")
+        #st.write(f"🚀 התחלת validation ")
         # 🔹 VAL
         val_cls_loss, val_bbox_loss, val_acc, val_iou, val_dice = validate_one_epoch_vit(
             model,
@@ -149,7 +149,7 @@ def run_training_only_train(
             device,
             epoch
         )
-        st.write(f"🚀 התחלת history ")
+        #st.write(f"🚀 התחלת history ")
         # 🔹 עדכון history
         history["epoch"].append(epoch)
         history["train_cls_loss"].append(train_cls_loss)
@@ -162,7 +162,7 @@ def run_training_only_train(
         history["val_iou"].append(val_iou)
         history["train_dice"].append(train_dice)
         history["val_dice"].append(val_dice)
-        st.write(f"🚀  history end ")
+        #st.write(f"🚀  history end ")
         # אפשר לעדכן סקדולר לפי ולידציה
         scheduler.step(val_cls_loss)
 
@@ -193,7 +193,7 @@ def train_one_epoch_vit(model, dataloader, classification_criterion, bbox_criter
     predicted_labels = []
     true_labels = []
     nodule_numbers_final = 0
-    st.write(f"🚀 התחלת אפוק1")
+    #st.write(f"🚀 התחלת אפוק1")
     for batch_idx, batch in enumerate(dataloader):
         #torch.cuda.empty_cache()
 
@@ -232,7 +232,7 @@ def train_one_epoch_vit(model, dataloader, classification_criterion, bbox_criter
         true_vals = true_classes.view(-1)
 
         total_classification_loss += classification_loss_stat
-        total_bbox_loss          += bbox_loss_stat
+        total_bbox_loss          += bbox_loss_stata
         total_objective_loss     += objective_loss_stat
 
         for pred, true in zip([final_result.item()], true_vals):
